@@ -1,0 +1,17 @@
+{
+  "name": "Jonny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sartaj <sartaj@sartaj.me> (sartaj.me)",
+  "license": "ISC",
+  "dependencies": {
+    "exeq": "^2.4.0",
+    "kefir": "^3.1.0",
+    "lodash": "^3.10.1",
+    "samsung-remote": "^1.2.4"
+  }
+}
