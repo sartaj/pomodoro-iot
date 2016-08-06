@@ -1,19 +1,17 @@
-var exeq = require('exeq');
+import exeq from 'exeq';
 
-module.exports.render = function setLights(lights) {
-
-  switch(lights) {
+export default function render(lights) {
+  switch (lights) {
     case undefined:
       break;
     case false:
       exeq('hue lights off');
       break;
     case true:
-      exeq("echo '" + JSON.stringify({"hue": 350, "bri": 255 }) + "' | hue lights state" );
+      exeq('echo "{hue: 350, bri: 255}" | hue lights state');
       break;
     default:
-      exeq("echo '" +  JSON.stringify({"hue": lights.h, "bri": lights.b }) + "' | hue lights state" );
+      exeq(`echo '{hue: ${lights.h}, bri: ${lights.b} }' | hue lights state`);
       break;
   }
-
 }

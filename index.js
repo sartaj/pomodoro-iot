@@ -1,35 +1,45 @@
 
 // # Core
 
-  var Kefir = require('kefir');
-  var _ = require('lodash');
+  // import { Observable } from 'rxjs-es/Observable';
+  // import 'rxjs-es/add/operator/map';
+  import * as Kefir from 'kefir';
 
-  var m = require('./mediator.js');
+  // import * as _ from 'lodash';
+  import open from 'open';
 
-// # Server
+  // # Server
 
-  var express = require('express');
-  var bodyParser = require('body-parser');
+  import express from 'express';
+  import * as bodyParser from 'body-parser';
 
-  var server = express();
+
+  import * as m from './mediator.js';
+  import { start, update } from './moods';
+
+
+  const server = express();
   server.use(express.static('client'));
-  server.use(bodyParser.json())
+  server.use(bodyParser.json());
   server.listen(8080);
+
+  open('http://localhost:8080');
+
+  // Observable.of(1, 2, 3).map(x => `${x}!!!`);
 
 // Children
 
-  var moods = require('./moods');
-  moods.start();
+  start();
 
 // Webook Natural Language Processor
 
   m['webhook:listened'] = Kefir.stream(emitter => {
-      server.post('/robin', (req, res) => {
-        emitter.emit(req);
-        res.send(true);
-      });
-    })
-    .filter((req, res) => typeof req.body === 'object');
+    server.post('/robin', (req, res) => {
+      emitter.emit(req);
+      res.send(true);
+    });
+  })
+  .filter(req => typeof req.body === 'object');
 
   m['webhook:processed-request'] = m['webhook:listened']
     .map(req => req.body);
@@ -38,6 +48,8 @@
     .filter(json => json.action === 'set-mood')
     .map(json => json.value);
 
+  m['webhook:update-mood-requested'].log('webhook:update-mood-requested');
+
   m['webhook:update-mood-requested'].onValue(requestedMood => {
-    moods.update(requestedMood);
+    update(requestedMood);
   });

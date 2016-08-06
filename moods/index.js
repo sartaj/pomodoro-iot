@@ -1,28 +1,27 @@
-var Kefir = require('kefir');
-var _ = require('lodash');
-var e = require('../mediator.js');
+import * as Kefir from 'kefir';
+import fs from 'fs';
 
-var fs = require('fs');
-var availableMoods = {};
+import mediator from '../mediator.js';
+import deviceDriver from '../devices/index.js';
 
-module.exports.start = function() {
+let availableMoods = {};
 
-  e['mood:init'] = Kefir.fromNodeCallback(callback => {
-    fs.readFile('./moods/moodMap.json', 'utf8', callback)
+function start() {
+  mediator['mood:init'] = Kefir.fromNodeCallback(callback => {
+    fs.readFile('./moods/moodMap.json', 'utf8', callback);
   }).map((data) => JSON.parse(data));
 
-  e['mood:init'].onValue(moods => {
-
+  mediator['mood:init'].onValue(moods => {
     availableMoods = moods;
-
   });
-
-};
-
-module.exports.update = renderMood;
-
-var devices = require('../devices/');
-function renderMood(requestedMood) {
-  var opts = availableMoods[requestedMood];
-  devices.render(opts)
 }
+
+function renderMood(requestedMood) {
+  const opts = availableMoods[requestedMood];
+  deviceDriver(opts);
+}
+
+export {
+  start,
+  renderMood as update,
+};

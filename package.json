@@ -1,17 +1,33 @@
 {
-  "name": "Jonny",
-  "version": "1.0.0",
+  "name": "pomodoro-iot",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js"
   },
   "author": "Sartaj <sartaj@sartaj.me> (sartaj.me)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "exeq": "^2.4.0",
+    "express": "^4.13.4",
     "kefir": "^3.1.0",
     "lodash": "^3.10.1",
+    "open": "0.0.5",
+    "rxjs-es": "^5.0.0-beta.10",
     "samsung-remote": "^1.2.4"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
+    "tape": "^4.6.0"
   }
 }

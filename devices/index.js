@@ -1,5 +1,11 @@
-module.exports.render = function(opts) {
-  require('./lights.js').render(opts.lights);
-  require('./music.js').render(opts.music);
-  require('./tv.js').render(opts.tv);
-};
+import lightsDriver from './lights.js';
+import musicDriver from './music.js';
+// import tvDriver from './tv.js';
+
+function render(opts) {
+  lightsDriver(opts.lights);
+  musicDriver(opts.music);
+  // tvDriver(opts.tv);
+}
+
+export default render;

@@ -1,3 +1,3 @@
-var mediator = {};
+const mediator = {};
 
-module.exports = mediator;
+export default mediator;
