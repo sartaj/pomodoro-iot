@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="../app/style/core.css" >
+	</head>
+	<body>
+		<div class="App-container"></div>
+		<script>
+			(function(){
+				require('babel-register');
+	      var app = require('./render.dom.js');
+				app.render('.App-container');
+			})();
+    </script>
+	</body>
+</html>
