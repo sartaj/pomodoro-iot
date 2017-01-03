@@ -4,6 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "NODE_ENV=production startx ./node_modules/electron/dist/electron .",
+    "test": "NODE_ENV=development startx ./node_modules/electron/dist/electron .",
     "postinstall": "",
     "watch": "node_modules/.bin/npm-watch",
     "css": "node_modules/.bin/myth src/style/index.css dist/style/style.css",
