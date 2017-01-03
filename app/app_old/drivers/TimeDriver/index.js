@@ -9,7 +9,9 @@ const timer = new Tock({
 });
 
 function source() {
-  return Observable.of(timer);
+  return {
+    clock: Observable.of(timer)
+  }
 }
 
 function sink(model$) {

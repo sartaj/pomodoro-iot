@@ -1,6 +1,7 @@
 import { app, BrowserWindow, Menu, Tray } from 'electron';
 import path from 'path';
 import menubar from 'menubar';
+import express from '../express-app/app.js';
 
 const mb = menubar({
   showDockIcon: true
@@ -27,12 +28,12 @@ function init(CONFIG) {
   });
 
   function openWindow() {
-
+    express();
     // Create the browser window.
     mainWindow = new BrowserWindow({ width: 800, height: 600 });
 
     // and load the index.html of the app.
-    mainWindow.loadURL(`file://${CONFIG.ROOT_URL}/render/index.desktop.html`);
+    mainWindow.loadURL(`http://localhost:3000`);
 
     // Emitted when the window is closed.
     mainWindow.on('closed', () => {

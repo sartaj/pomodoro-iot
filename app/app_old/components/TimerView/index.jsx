@@ -23,8 +23,8 @@ const TimerView = Cycle.component('Hello', (interactions, props) => {
     .map(clock =>
       <div>
         {clock}
-        {/* <div className="clock">{clock.name}</div> */}
-        {/* <div className="clock" >{prop.timeLeft}</div> */}
+        <div className="clock">{clock.name}</div>
+        <div className="clock" >{prop.timeLeft}</div>
         <button>Play</button>
         <button onClick={interactions.listener('PauseClicked')}>Pause</button>
         <button>Reset</button>

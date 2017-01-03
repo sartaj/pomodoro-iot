@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "",
     "watch": "node_modules/.bin/npm-watch",
     "css": "node_modules/.bin/myth src/style/index.css dist/style/style.css",
     "test": " ./node_modules/.bin/babel-tape-runner ./src/**/*.test.js | ./node_modules/.bin/tap-spec --color"
@@ -12,14 +12,20 @@
   "author": "Sartaj <sartaj@sartaj.me> (sartaj.me)",
   "license": "MIT",
   "dependencies": {
+    "@cycle/core": "^6.0.0",
+    "@cycle/dom": "^8.0.0",
+    "@cycle/isolate": "^1.2.0",
     "babel-register": "^6.11.6",
     "body-parser": "^1.15.2",
     "cycle-react": "^4.0.0",
+    "cycle-restart": "0.0.9",
     "exeq": "^2.4.0",
     "express": "^4.14.0",
     "hue-cli": "^0.1.0",
-    "jquery": "^3.1.0",
+    "hue.js": "^0.2.13",
+    "jquery": "^3.1.1",
     "kefir": "^3.1.0",
+    "keymaster": "^1.6.2",
     "lodash": "^3.10.1",
     "mousetrap": "^1.6.0",
     "open": "0.0.5",
@@ -27,9 +33,11 @@
     "react-countdown-clock": "^1.0.5",
     "react-dom": "^15.3.0",
     "react.timer": "^2.1.0",
-    "rx": "^4.1.0",
+    "request": "^2.79.0",
+    "rx": "^4.0.7",
     "rxjs-es": "^5.0.0-beta.10",
     "samsung-remote": "^1.2.4",
-    "tocktimer": "^1.0.10"
+    "tocktimer": "^1.0.10",
+    "web-audio-daw": "^2.3.1"
   }
 }
